@@ -4,15 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./server/server.js"
+    "dev": "nodemon ./server/server.js",
+    "build:client": "webpack --config webpack.config.client.js --watch"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^3.9.2",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.5.0",
     "mysql": "^2.16.0",
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
   }
 }
