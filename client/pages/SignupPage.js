@@ -1,11 +1,30 @@
 import React from 'react';
 
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
+import {withStyles} from '@material-ui/core/styles';
 
 import {create} from '../api/user.api';
+
+const styles = theme => ({
+  card: {
+    maxWidth: 600,
+    margin: 'auto',
+    textAlign: 'center',
+  },
+  textField: {
+    width: 300,
+  },
+  button: {
+    margin: 'auto',
+    marginBottom: theme.spacing.unit * 5,
+  },
+});
 
 class SignupPage extends React.Component {
   state = {
@@ -53,59 +72,80 @@ class SignupPage extends React.Component {
   };
 
   render () {
+    const {classes} = this.props;
     return (
       <div>
-        <Typography>Signup</Typography>
-        <TextField
-          value={this.state.firstName}
-          label="First Name"
-          margin="normal"
-          onChange={this.onFieldChange ('firstName')}
-        />
-        <br />
-        <TextField
-          value={this.state.middleName}
-          label="Middle Name (Optional)"
-          margin="normal"
-          onChange={this.onFieldChange ('middleName')}
-        />
-        <br />
-        <TextField
-          value={this.state.lastName}
-          label="Last Name"
-          margin="normal"
-          onChange={this.onFieldChange ('lastName')}
-        />
-        <br />
-        <TextField
-          value={this.state.gender}
-          select
-          label="Gender"
-          onChange={this.onFieldChange ('gender')}
-        >
-          <MenuItem value={'M'}>M</MenuItem>
-          <MenuItem value={'F'}>F</MenuItem>
-          <MenuItem value={'O'}>O</MenuItem>
-        </TextField><br />
-        <TextField
-          value={this.state.email}
-          label="Email"
-          margin="normal"
-          onChange={this.onFieldChange ('email')}
-        />
-        <br />
-        <TextField
-          value={this.state.password}
-          label="Password"
-          margin="normal"
-          onChange={this.onFieldChange ('password')}
-        />
-        <br />
-        {this.state.error && <Typography>{this.state.error}</Typography>}
-        <Button onClick={this.onSubmit}>Submit</Button>
+        <Card className={classes.card}>
+          <CardContent>
+            <Typography variant="h5">Signup</Typography>
+            <TextField
+              className={classes.textField}
+              value={this.state.firstName}
+              label="First Name"
+              margin="normal"
+              onChange={this.onFieldChange ('firstName')}
+            />
+            <br />
+            <TextField
+              className={classes.textField}
+              value={this.state.middleName}
+              label="Middle Name (Optional)"
+              margin="normal"
+              onChange={this.onFieldChange ('middleName')}
+            />
+            <br />
+            <TextField
+              className={classes.textField}
+              value={this.state.lastName}
+              label="Last Name"
+              margin="normal"
+              onChange={this.onFieldChange ('lastName')}
+            />
+            <br />
+            <TextField
+              className={classes.textField}
+              value={this.state.gender}
+              select
+              label="Gender"
+              onChange={this.onFieldChange ('gender')}
+            >
+              <MenuItem value={'M'}>M</MenuItem>
+              <MenuItem value={'F'}>F</MenuItem>
+              <MenuItem value={'O'}>O</MenuItem>
+            </TextField><br />
+            <TextField
+              className={classes.textField}
+              value={this.state.email}
+              label="Email"
+              margin="normal"
+              onChange={this.onFieldChange ('email')}
+            />
+            <br />
+            <TextField
+              className={classes.textField}
+              value={this.state.password}
+              label="Password"
+              margin="normal"
+              onChange={this.onFieldChange ('password')}
+            />
+            <br />
+            {this.state.error && <Typography>{this.state.error}</Typography>}
+          </CardContent>
+          <CardActions>
+            <Button
+              className={classes.button}
+              variant="contained"
+              color="primary"
+              onClick={this.onSubmit}
+            >
+              Submit
+            </Button>
+          </CardActions>
+        </Card>
+
       </div>
     );
   }
 }
 
-export default SignupPage;
+export default withStyles (styles) (SignupPage);
