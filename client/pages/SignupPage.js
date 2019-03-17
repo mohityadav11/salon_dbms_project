@@ -3,6 +3,9 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
+import Button from '@material-ui/core/Button';
+
+import {create} from '../api/user.api';
 
 class SignupPage extends React.Component {
   state = {
@@ -12,6 +15,7 @@ class SignupPage extends React.Component {
     gender: 'M',
     email: '',
     password: '',
+    error: '',
   };
 
   onFieldChange = field => {
@@ -19,6 +23,33 @@ class SignupPage extends React.Component {
       const value = e.target.value;
       this.setState (() => ({[field]: value}));
     };
+  };
+
+  onSubmit = () => {
+    if (
+      !this.state.firstName ||
+      !this.state.lastName ||
+      !this.state.gender ||
+      !this.state.email ||
+      !this.state.password
+    ) {
+      this.setState (() => ({
+        error: 'All fields are necessary.',
+      }));
+    } else {
+      const user = {
+        firstName: this.state.firstName,
+        middleName: this.state.middleName || null,
+        lastName: this.state.lastName,
+        gender: this.state.gender,
+        email: this.state.email,
+        password: this.state.password,
+      };
+
+      create (user).then (data => {
+        console.log (data);
+      });
+    }
   };
 
   render () {
@@ -34,7 +65,7 @@ class SignupPage extends React.Component {
         <br />
         <TextField
           value={this.state.middleName}
-          label="Middle Name"
+          label="Middle Name (Optional)"
           margin="normal"
           onChange={this.onFieldChange ('middleName')}
         />
@@ -70,6 +101,8 @@ class SignupPage extends React.Component {
           onChange={this.onFieldChange ('password')}
         />
         <br />
+        {this.state.error && <Typography>{this.state.error}</Typography>}
+        <Button onClick={this.onSubmit}>Submit</Button>
       </div>
     );
   }
