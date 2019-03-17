@@ -13,6 +13,7 @@
     "@material-ui/core": "^3.9.2",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "body-parser": "^1.18.3",
@@ -22,6 +23,7 @@
     "nodemon": "^1.18.10",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
+    "react-router-dom": "^4.4.0",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
   }

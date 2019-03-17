@@ -1,10 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const App = () => (
-  <div>
-    Hello World
-  </div>
-);
+import MainRouter from './routers/MainRouter';
 
-ReactDOM.render (<App />, document.getElementById ('root'));
+ReactDOM.render (<MainRouter />, document.getElementById ('root'));
