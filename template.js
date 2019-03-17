@@ -16,7 +16,7 @@ module.exports = () => {
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
     
-        <title>Jamians</title>
+        <title>Salon dbms project</title>
       </head>
       <body>
         <div id="root"></div>
