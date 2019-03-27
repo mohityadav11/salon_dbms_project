@@ -13,3 +13,16 @@ export const create = (salon, token) => {
     console.log (data);
   });
 };
+
+export const list = token => {
+  return axios ({
+    method: 'get',
+    url: '/api/salon',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token,
+    },
+  }).then (({data}) => {
+    return data.salons;
+  });
+};
