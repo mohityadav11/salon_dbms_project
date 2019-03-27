@@ -5,7 +5,7 @@ const config = require ('../../config/config');
 const login = (req, res) => {
   const {email, password} = req.body;
 
-  connection.query ('SELECT * FROM users WHERE email = ?', [email], function (
+  connection.query ('SELECT * FROM user WHERE email = ?', [email], function (
     err,
     results,
     fields

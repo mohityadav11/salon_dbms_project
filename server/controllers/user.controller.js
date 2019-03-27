@@ -3,7 +3,7 @@ const connection = require ('../mysql/mysql_connection');
 const create = (req, res) => {
   const user = req.body;
 
-  connection.query ('INSERT INTO users SET ?', user, function (
+  connection.query ('INSERT INTO user SET ?', user, function (
     err,
     results,
     fields
