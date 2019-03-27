@@ -1,6 +1,7 @@
 const connection = require ('../mysql/mysql_connection');
 const jwt = require ('jsonwebtoken');
 const config = require ('../../config/config');
+const expressJwt = require ('express-jwt');
 
 const login = (req, res) => {
   const {email, password} = req.body;
@@ -43,6 +44,12 @@ const login = (req, res) => {
   });
 };
 
+const requireSignin = expressJwt ({
+  secret: config.JWT_SECRET,
+  requestProperty: 'auth',
+});
+
 module.exports = {
   login,
+  requireSignin,
 };

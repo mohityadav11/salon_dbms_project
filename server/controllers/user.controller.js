@@ -26,6 +26,11 @@ const create = (req, res) => {
   });
 };
 
+const currentUser = (req, res) => {
+  res.status (200).json (req.auth);
+};
+
 module.exports = {
   create,
+  currentUser,
 };
