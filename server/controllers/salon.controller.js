@@ -57,4 +57,22 @@ const list = (req, res) => {
   }
 };
 
-module.exports = {create, list};
+const read = (req, res) => {
+  const {salonId} = req.params;
+
+  connection.query (
+    'SELECT * FROM salon WHERE id = ?',
+    parseInt (salonId, 10),
+    function (err, results, fields) {
+      if (err) {
+        return res.status (400).json ({
+          err,
+        });
+      }
+
+      res.status (200).json (results[0]);
+    }
+  );
+};
+
+module.exports = {create, list, read};

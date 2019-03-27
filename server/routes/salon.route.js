@@ -9,4 +9,8 @@ router
   .post (authCtrl.requireSignin, salonCtrl.create)
   .get (authCtrl.requireSignin, salonCtrl.list);
 
+router
+  .route ('/api/salon/:salonId')
+  .get (authCtrl.requireSignin, salonCtrl.read);
+
 module.exports = router;
