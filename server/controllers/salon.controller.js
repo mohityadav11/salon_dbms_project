@@ -24,17 +24,37 @@ const create = (req, res) => {
 };
 
 const list = (req, res) => {
-  connection.query ('SELECT * FROM salon', function (err, results, fields) {
-    if (err) {
-      return res.status (400).json ({
-        err,
-      });
-    }
+  if (req.query.limit) {
+    const {limit} = req.query;
 
-    res.status (200).json ({
-      salons: results,
+    connection.query (
+      'SELECT * FROM salon LIMIT ?',
+      parseInt (limit, 10),
+      function (err, results, fields) {
+        if (err) {
+          return res.status (400).json ({
+            err,
+          });
+        }
+
+        res.status (200).json ({
+          salons: results,
+        });
+      }
+    );
+  } else {
+    connection.query ('SELECT * FROM salon', function (err, results, fields) {
+      if (err) {
+        return res.status (400).json ({
+          err,
+        });
+      }
+
+      res.status (200).json ({
+        salons: results,
+      });
     });
-  });
+  }
 };
 
 module.exports = {create, list};

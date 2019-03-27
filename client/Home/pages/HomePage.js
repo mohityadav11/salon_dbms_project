@@ -12,7 +12,7 @@ class HomePage extends React.Component {
   componentDidMount () {
     const {token} = isAuthenticated ();
 
-    list (token).then (salons => {
+    list (token, 2).then (salons => {
       this.setState (() => ({salons}));
     });
   }

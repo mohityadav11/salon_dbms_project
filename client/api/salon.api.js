@@ -14,15 +14,28 @@ export const create = (salon, token) => {
   });
 };
 
-export const list = token => {
-  return axios ({
-    method: 'get',
-    url: '/api/salon',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + token,
-    },
-  }).then (({data}) => {
-    return data.salons;
-  });
+export const list = (token, limit) => {
+  if (limit) {
+    return axios ({
+      method: 'get',
+      url: `/api/salon?limit=${limit}`,
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token,
+      },
+    }).then (({data}) => {
+      return data.salons;
+    });
+  } else {
+    return axios ({
+      method: 'get',
+      url: `/api/salon`,
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token,
+      },
+    }).then (({data}) => {
+      return data.salons;
+    });
+  }
 };
