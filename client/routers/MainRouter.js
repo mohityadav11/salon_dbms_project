@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import SignupPage from '../pages/SignupPage';
 import LoginPage from '../pages/LoginPage';
 import Header from '../components/Header';
+import CreateSalonPage from '../Salon/pages/CreateSalonPage';
 
 const MainRouter = () => (
   <BrowserRouter>
@@ -12,6 +13,7 @@ const MainRouter = () => (
       <Switch>
         <Route path="/signup" component={SignupPage} />
         <Route path="/login" component={LoginPage} />
+        <Route path="/salon/create" component={CreateSalonPage} />
       </Switch>
     </div>
   </BrowserRouter>
