@@ -1,4 +1,7 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+
+import Button from '@material-ui/core/Button';
 
 import {list} from '../../api/salon.api';
 import {isAuthenticated} from '../../helpers/auth.helper';
@@ -21,6 +24,7 @@ class HomePage extends React.Component {
     return (
       <div>
         {this.state.salons.map (salon => <Item key={salon.id} salon={salon} />)}
+        <Link to="/salon"><Button>More Salons</Button></Link>
       </div>
     );
   }
