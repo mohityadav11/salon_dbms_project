@@ -7,6 +7,7 @@ import Header from '../components/Header';
 import CreateSalonPage from '../Salon/pages/CreateSalonPage';
 import HomePage from '../Home/pages/HomePage';
 import SalonListPage from '../Salon/pages/SalonListPage';
+import SalonPage from '../Salon/pages/SalonPage';
 
 const MainRouter = () => (
   <BrowserRouter>
@@ -14,6 +15,7 @@ const MainRouter = () => (
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route path="/salon/:salonId" component={SalonPage} />
         <Route path="/salon" component={SalonListPage} />
         <Route path="/signup" component={SignupPage} />
         <Route path="/login" component={LoginPage} />

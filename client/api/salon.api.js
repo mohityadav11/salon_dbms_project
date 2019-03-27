@@ -39,3 +39,16 @@ export const list = (token, limit) => {
     });
   }
 };
+
+export const read = (token, salonId) => {
+  return axios ({
+    method: 'get',
+    url: `/api/salon/${salonId}`,
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token,
+    },
+  }).then (({data}) => {
+    return data;
+  });
+};
