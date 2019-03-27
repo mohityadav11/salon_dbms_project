@@ -4,6 +4,9 @@ const authCtrl = require ('../controllers/auth.controller');
 
 const router = express.Router ();
 
-router.route ('/api/salon').post (authCtrl.requireSignin, salonCtrl.create);
+router
+  .route ('/api/salon')
+  .post (authCtrl.requireSignin, salonCtrl.create)
+  .get (authCtrl.requireSignin, salonCtrl.list);
 
 module.exports = router;

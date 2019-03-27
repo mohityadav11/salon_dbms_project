@@ -23,4 +23,18 @@ const create = (req, res) => {
   });
 };
 
-module.exports = {create};
+const list = (req, res) => {
+  connection.query ('SELECT * FROM salon', function (err, results, fields) {
+    if (err) {
+      return res.status (400).json ({
+        err,
+      });
+    }
+
+    res.status (200).json ({
+      salons: results,
+    });
+  });
+};
+
+module.exports = {create, list};
