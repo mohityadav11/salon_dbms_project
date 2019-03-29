@@ -2,11 +2,11 @@ import React from 'react';
 
 class StaffForm extends React.Component {
   state = {
-    first_name: '',
-    last_name: '',
-    age: '',
-    gender: '',
-    contact_no: '',
+    first_name: this.props.staff ? this.props.staff.first_name : '',
+    last_name: this.props.staff ? this.props.staff.last_name : '',
+    age: this.props.staff ? this.props.staff.age : '',
+    gender: this.props.staff ? this.props.staff.gender : '',
+    contact_no: this.props.staff ? this.props.staff.contact_no : '',
   };
 
   onFieldChange = name => {

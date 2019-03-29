@@ -1,5 +1,6 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {Router, Route, Switch} from 'react-router-dom';
+import {createBrowserHistory} from 'history';
 
 import SignupPage from '../pages/SignupPage';
 import LoginPage from '../pages/LoginPage';
@@ -8,15 +9,21 @@ import CreateSalonPage from '../Salon/pages/CreateSalonPage';
 import HomePage from '../Home/pages/HomePage';
 import SalonListPage from '../Salon/pages/SalonListPage';
 import SalonPage from '../Salon/pages/SalonPage';
-import StaffForm from '../Salon/components/StaffForm';
 import AddStaffPage from '../Salon/pages/AddStaffPage';
+import UpdateStaffPage from '../Salon/pages/UpdateStaffPage';
+
+const history = createBrowserHistory ();
 
 const MainRouter = () => (
-  <BrowserRouter>
+  <Router history={history}>
     <div>
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route
+          path="/salon/:salonId/staff/:staffId"
+          component={UpdateStaffPage}
+        />
         <Route path="/salon/:salonId/staff/create" component={AddStaffPage} />
         <Route path="/salon/:salonId" component={SalonPage} />
         <Route path="/salon" component={SalonListPage} />
@@ -25,7 +32,7 @@ const MainRouter = () => (
         <Route path="/salon/create" component={CreateSalonPage} />
       </Switch>
     </div>
-  </BrowserRouter>
+  </Router>
 );
 
 export default MainRouter;

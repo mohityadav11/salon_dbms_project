@@ -11,6 +11,7 @@ router
 
 router
   .route ('/api/staff/:staffId')
-  .post (authCtrl.requireSignin, staffCtrl.update);
+  .post (authCtrl.requireSignin, staffCtrl.update)
+  .get (authCtrl.requireSignin, staffCtrl.read);
 
 module.exports = router;

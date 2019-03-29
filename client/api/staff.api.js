@@ -26,3 +26,30 @@ export const list = (token, salonId) => {
     return data.staffs;
   });
 };
+
+export const read = (token, staffId) => {
+  return axios ({
+    method: 'get',
+    url: `/api/staff/${staffId}`,
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token,
+    },
+  }).then (({data}) => {
+    return data;
+  });
+};
+
+export const update = (token, staffId, payload) => {
+  return axios ({
+    method: 'post',
+    url: `/api/staff/${staffId}`,
+    data: JSON.stringify (payload),
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token,
+    },
+  }).then (({data}) => {
+    console.log (data);
+  });
+};

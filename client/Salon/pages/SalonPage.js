@@ -38,7 +38,16 @@ class SalonPage extends React.Component {
                 <h2>Staffs</h2>
                 {this.state.staffs.map (staff => (
                   <li key={staff.id}>
-                    {staff.first_name}{' '}{staff.last_name}
+                    <span>{staff.first_name}{' '}{staff.last_name}</span>
+                    <button
+                      onClick={() => {
+                        this.props.history.push (
+                          `/salon/${this.state.salon.id}/staff/${staff.id}`
+                        );
+                      }}
+                    >
+                      Edit
+                    </button>
                   </li>
                 ))}
                 <Link to={`/salon/${salon.id}/staff/create`}>

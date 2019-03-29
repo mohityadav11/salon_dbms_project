@@ -81,4 +81,27 @@ const update = (req, res) => {
   });
 };
 
-module.exports = {create, list, update};
+const read = (req, res) => {
+  const {staffId} = req.params;
+
+  const sql = `
+    SELECT * FROM staff
+    WHERE id = ?
+  `;
+
+  connection.query (sql, parseInt (staffId, 10), function (
+    err,
+    results,
+    fields
+  ) {
+    if (err) {
+      return res.status (400).json ({
+        err,
+      });
+    }
+
+    res.status (200).json (results[0]);
+  });
+};
+
+module.exports = {create, list, update, read};
