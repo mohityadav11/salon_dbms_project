@@ -75,4 +75,31 @@ const read = (req, res) => {
   );
 };
 
-module.exports = {create, list, read};
+const update = (req, res) => {
+  const {salonId} = req.params;
+  const updateObject = req.body;
+
+  const sql = `
+    UPDATE salon
+    SET ?
+    WHERE id = ?
+  `;
+
+  connection.query (sql, [updateObject, parseInt (salonId, 10)], function (
+    err,
+    results,
+    fields
+  ) {
+    if (err) {
+      return res.status (400).json ({
+        err,
+      });
+    }
+
+    res.status (200).json ({
+      maessage: 'Salon updated.',
+    });
+  });
+};
+
+module.exports = {create, list, read, update};

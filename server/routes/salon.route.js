@@ -11,6 +11,7 @@ router
 
 router
   .route ('/api/salon/:salonId')
-  .get (authCtrl.requireSignin, salonCtrl.read);
+  .get (authCtrl.requireSignin, salonCtrl.read)
+  .post (authCtrl.requireSignin, salonCtrl.update);
 
 module.exports = router;
