@@ -4,6 +4,9 @@ const staffCtrl = require ('../controllers/staff.controller');
 
 const router = express.Router ();
 
-router.route ('/api/staff').post (authCtrl.requireSignin, staffCtrl.create);
+router
+  .route ('/api/staff')
+  .post (authCtrl.requireSignin, staffCtrl.create)
+  .get (authCtrl.requireSignin, staffCtrl.list);
 
 module.exports = router;

@@ -20,4 +20,27 @@ const create = (req, res) => {
   });
 };
 
-module.exports = {create};
+const list = (req, res) => {
+  const {salonId} = req.query;
+
+  sql = `
+    SELECT * FROM staff
+    INNER JOIN salon
+    ON salon.id = staff.salon_id
+    WHERE salon.id = ?
+  `;
+
+  connection.query (sql, parseInt (salonId, 10), function (
+    err,
+    results,
+    fields
+  ) {
+    if (err) {
+      return console.log (err);
+    }
+
+    console.log (results);
+  });
+};
+
+module.exports = {create, list};
