@@ -54,4 +54,31 @@ const list = (req, res) => {
   });
 };
 
-module.exports = {create, list};
+const update = (req, res) => {
+  const {staffId} = req.params;
+  const updateObject = req.body;
+
+  const sql = `
+    UPDATE staff
+    SET ?
+    WHERE id = ?
+  `;
+
+  connection.query (sql, [updateObject, parseInt (staffId, 10)], function (
+    err,
+    results,
+    fields
+  ) {
+    if (err) {
+      return res.status (400).json ({
+        err,
+      });
+    }
+
+    res.status (200).json ({
+      maessage: 'Staff updated.',
+    });
+  });
+};
+
+module.exports = {create, list, update};

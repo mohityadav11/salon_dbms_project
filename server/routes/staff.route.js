@@ -9,4 +9,8 @@ router
   .post (authCtrl.requireSignin, staffCtrl.create)
   .get (authCtrl.requireSignin, staffCtrl.list);
 
+router
+  .route ('/api/staff/:staffId')
+  .post (authCtrl.requireSignin, staffCtrl.update);
+
 module.exports = router;
