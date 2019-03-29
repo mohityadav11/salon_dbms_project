@@ -56,6 +56,9 @@ class SalonPage extends React.Component {
                   <Button>Add Staff</Button>
                 </Link>
               </div>
+              <hr />
+              <h2>Services</h2>
+              <Link to={`/salon/${salon.id}/service/create`}>Add service</Link>
             </div>
           : <div>Loading</div>}
       </div>

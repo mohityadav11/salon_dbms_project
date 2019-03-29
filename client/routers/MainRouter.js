@@ -12,6 +12,7 @@ import AddStaffPage from '../Salon/pages/AddStaffPage';
 import UpdateStaffPage from '../Salon/pages/UpdateStaffPage';
 import AddSalonPage from '../Salon/pages/AddSalonPage';
 import UpdateSalonPage from '../Salon/pages/UpdateSalonPage';
+import AddServicePage from '../Salon/pages/AddServicePage';
 
 const history = createBrowserHistory ();
 
@@ -21,6 +22,10 @@ const MainRouter = () => (
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route
+          path="/salon/:salonId/service/create"
+          component={AddServicePage}
+        />
         <Route path="/salon/:salonId/staff/create" component={AddStaffPage} />
         <Route
           path="/salon/:salonId/staff/:staffId"
