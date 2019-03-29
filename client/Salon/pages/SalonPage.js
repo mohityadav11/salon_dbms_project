@@ -32,7 +32,9 @@ class SalonPage extends React.Component {
       <div>
         {this.state.salon
           ? <div>
-              <Typography>Name: {salon.name}</Typography>
+              <h2>Salon Details</h2>
+              <p>Name: {salon.name}</p>
+              <Link to={`/salon/${this.state.salon.id}/update`}>Edit</Link>
               <hr />
               <div>
                 <h2>Staffs</h2>

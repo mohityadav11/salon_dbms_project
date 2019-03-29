@@ -2,11 +2,11 @@ import React from 'react';
 
 class SalonForm extends React.Component {
   state = {
-    name: '',
-    location: '',
-    contact_no: '',
-    website_link: '',
-    email: '',
+    name: this.props.salon ? this.props.salon.name : '',
+    location: this.props.salon ? this.props.salon.location : '',
+    contact_no: this.props.salon ? this.props.salon.contact_no : '',
+    website_link: this.props.salon ? this.props.salon.website_link : '',
+    email: this.props.salon ? this.props.salon.email : '',
   };
 
   handleFieldChange = field => {

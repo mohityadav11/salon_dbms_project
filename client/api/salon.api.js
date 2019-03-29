@@ -52,3 +52,17 @@ export const read = (token, salonId) => {
     return data;
   });
 };
+
+export const update = (token, salonId, payload) => {
+  return axios ({
+    method: 'post',
+    url: `/api/salon/${salonId}`,
+    data: JSON.stringify (payload),
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token,
+    },
+  }).then (({data}) => {
+    console.log (data);
+  });
+};
