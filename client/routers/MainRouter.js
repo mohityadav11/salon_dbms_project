@@ -5,12 +5,12 @@ import {createBrowserHistory} from 'history';
 import SignupPage from '../pages/SignupPage';
 import LoginPage from '../pages/LoginPage';
 import Header from '../components/Header';
-import CreateSalonPage from '../Salon/pages/CreateSalonPage';
 import HomePage from '../Home/pages/HomePage';
 import SalonListPage from '../Salon/pages/SalonListPage';
 import SalonPage from '../Salon/pages/SalonPage';
 import AddStaffPage from '../Salon/pages/AddStaffPage';
 import UpdateStaffPage from '../Salon/pages/UpdateStaffPage';
+import AddSalonPage from '../Salon/pages/AddSalonPage';
 
 const history = createBrowserHistory ();
 
@@ -20,16 +20,16 @@ const MainRouter = () => (
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route path="/salon/:salonId/staff/create" component={AddStaffPage} />
         <Route
           path="/salon/:salonId/staff/:staffId"
           component={UpdateStaffPage}
         />
-        <Route path="/salon/:salonId/staff/create" component={AddStaffPage} />
+        <Route path="/salon/create" component={AddSalonPage} />
         <Route path="/salon/:salonId" component={SalonPage} />
         <Route path="/salon" component={SalonListPage} />
         <Route path="/signup" component={SignupPage} />
         <Route path="/login" component={LoginPage} />
-        <Route path="/salon/create" component={CreateSalonPage} />
       </Switch>
     </div>
   </Router>
