@@ -13,3 +13,16 @@ export const create = (token, staff) => {
     console.log (data);
   });
 };
+
+export const list = (token, salonId) => {
+  return axios ({
+    method: 'get',
+    url: `/api/staff?salonId=${salonId}`,
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token,
+    },
+  }).then (({data}) => {
+    return data.staffs;
+  });
+};

@@ -24,7 +24,14 @@ const list = (req, res) => {
   const {salonId} = req.query;
 
   sql = `
-    SELECT * FROM staff
+    SELECT
+      staff.id,
+      staff.first_name,
+      staff.last_name,
+      staff.age,
+      staff.gender,
+      staff.contact_no
+    FROM staff
     INNER JOIN salon
     ON salon.id = staff.salon_id
     WHERE salon.id = ?
@@ -36,10 +43,14 @@ const list = (req, res) => {
     fields
   ) {
     if (err) {
-      return console.log (err);
+      return res.status (400).json ({
+        err,
+      });
     }
 
-    console.log (results);
+    res.status (200).json ({
+      staffs: results,
+    });
   });
 };
 

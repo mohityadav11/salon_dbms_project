@@ -5,11 +5,13 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
 import {read} from '../../api/salon.api';
+import {list} from '../../api/staff.api';
 import {isAuthenticated} from '../../helpers/auth.helper';
 
 class SalonPage extends React.Component {
   state = {
     salon: null,
+    staffs: [],
   };
 
   componentDidMount () {
@@ -17,6 +19,10 @@ class SalonPage extends React.Component {
     const {salonId} = this.props.match.params;
     read (token, salonId).then (salon => {
       this.setState (() => ({salon}));
+    });
+
+    list (token, salonId).then (staffs => {
+      this.setState (() => ({staffs}));
     });
   }
 
@@ -27,9 +33,18 @@ class SalonPage extends React.Component {
         {this.state.salon
           ? <div>
               <Typography>Name: {salon.name}</Typography>
-              <Link to={`/salon/${salon.id}/staff/create`}>
-                <Button>Add Staff</Button>
-              </Link>
+              <hr />
+              <div>
+                <h2>Staffs</h2>
+                {this.state.staffs.map (staff => (
+                  <li key={staff.id}>
+                    {staff.first_name}{' '}{staff.last_name}
+                  </li>
+                ))}
+                <Link to={`/salon/${salon.id}/staff/create`}>
+                  <Button>Add Staff</Button>
+                </Link>
+              </div>
             </div>
           : <div>Loading</div>}
       </div>
