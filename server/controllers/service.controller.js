@@ -25,6 +25,7 @@ const list = (req, res) => {
 
   sql = `
     SELECT
+      service.id,
       service.name,
       service.tag,
       service.brand,

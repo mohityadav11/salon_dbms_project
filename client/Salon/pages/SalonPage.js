@@ -1,17 +1,18 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
 import {read} from '../../api/salon.api';
 import {list} from '../../api/staff.api';
+import {listServices} from '../../api/service.api';
 import {isAuthenticated} from '../../helpers/auth.helper';
 
 class SalonPage extends React.Component {
   state = {
     salon: null,
     staffs: [],
+    services: [],
   };
 
   componentDidMount () {
@@ -23,6 +24,10 @@ class SalonPage extends React.Component {
 
     list (token, salonId).then (staffs => {
       this.setState (() => ({staffs}));
+    });
+
+    listServices (token, salonId).then (services => {
+      this.setState (() => ({services}));
     });
   }
 
@@ -58,6 +63,20 @@ class SalonPage extends React.Component {
               </div>
               <hr />
               <h2>Services</h2>
+              {this.state.services.map (service => (
+                <li key={service.id}>
+                  <span>{service.name} - {service.cost}</span>
+                  {/* <button
+                    onClick={() => {
+                      this.props.history.push (
+                        `/salon/${this.state.salon.id}/staff/${staff.id}`
+                      );
+                    }}
+                  >
+                    Edit
+                  </button> */}
+                </li>
+              ))}
               <Link to={`/salon/${salon.id}/service/create`}>Add service</Link>
             </div>
           : <div>Loading</div>}
