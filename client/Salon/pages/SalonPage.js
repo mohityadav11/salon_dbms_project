@@ -78,6 +78,14 @@ class SalonPage extends React.Component {
                 </li>
               ))}
               <Link to={`/salon/${salon.id}/service/create`}>Add service</Link>
+
+              <hr />
+
+              <h2>Salon Time Table</h2>
+              <Link to={`/salon/${salon.id}/time_table/create`}>
+                Add Time table
+              </Link>
+
             </div>
           : <div>Loading</div>}
       </div>
