@@ -8,6 +8,7 @@ const authRoutes = require ('./routes/auth.route');
 const salonRoutes = require ('./routes/salon.route');
 const staffRoutes = require ('./routes/staff.route');
 const serviceRoutes = require ('./routes/service.route');
+const salonTimeTableRoutes = require ('./routes/salonTimeTable.route');
 
 const app = express ();
 app.use (bodyParser.json ());
@@ -18,6 +19,7 @@ app.use ('/', authRoutes);
 app.use ('/', salonRoutes);
 app.use ('/', staffRoutes);
 app.use ('/', serviceRoutes);
+app.use ('/', salonTimeTableRoutes);
 
 app.get ('*', (req, res) => {
   res.send (template ());
