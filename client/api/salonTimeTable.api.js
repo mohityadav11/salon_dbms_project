@@ -13,3 +13,16 @@ export const create = (token, salonTimeTable) => {
     console.log (data);
   });
 };
+
+export const listTimeTable = (token, salonId) => {
+  return axios ({
+    method: 'get',
+    url: `/api/salonTimeTable?salonId=${salonId}`,
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token,
+    },
+  }).then (({data}) => {
+    return data.timeTable;
+  });
+};

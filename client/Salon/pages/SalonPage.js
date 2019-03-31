@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import {read} from '../../api/salon.api';
 import {list} from '../../api/staff.api';
 import {listServices} from '../../api/service.api';
+import {listTimeTable} from '../../api/salonTimeTable.api';
 import {isAuthenticated} from '../../helpers/auth.helper';
 
 class SalonPage extends React.Component {
@@ -13,6 +14,7 @@ class SalonPage extends React.Component {
     salon: null,
     staffs: [],
     services: [],
+    timeTable: [],
   };
 
   componentDidMount () {
@@ -28,6 +30,10 @@ class SalonPage extends React.Component {
 
     listServices (token, salonId).then (services => {
       this.setState (() => ({services}));
+    });
+
+    listTimeTable (token, salonId).then (timeTable => {
+      this.setState (() => ({timeTable}));
     });
   }
 
@@ -82,6 +88,11 @@ class SalonPage extends React.Component {
               <hr />
 
               <h2>Salon Time Table</h2>
+              {this.state.timeTable.map (tt => (
+                <li key={tt.day}>
+                  <span>{tt.day}-{tt.opening_time}-{tt.closing_time}</span>
+                </li>
+              ))}
               <Link to={`/salon/${salon.id}/time_table/create`}>
                 Add Time table
               </Link>
