@@ -2,6 +2,8 @@ import React from 'react';
 import {Router, Route, Switch} from 'react-router-dom';
 import {createBrowserHistory} from 'history';
 
+import PrivateRoute from './PrivateRouter';
+
 import SignupPage from '../pages/SignupPage';
 import LoginPage from '../pages/LoginPage';
 import Header from '../components/Header';
@@ -22,24 +24,30 @@ const MainRouter = () => (
     <div>
       <Header />
       <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route
+        <PrivateRoute exact path="/" component={HomePage} />
+        <PrivateRoute
           path="/salon/:salonId/service/create"
           component={AddServicePage}
         />
-        <Route path="/salon/:salonId/staff/create" component={AddStaffPage} />
-        <Route
+        <PrivateRoute
+          path="/salon/:salonId/staff/create"
+          component={AddStaffPage}
+        />
+        <PrivateRoute
           path="/salon/:salonId/staff/:staffId"
           component={UpdateStaffPage}
         />
-        <Route
+        <PrivateRoute
           path="/salon/:salonId/time_table/create"
           component={AddTimeTablePage}
         />
-        <Route path="/salon/create" component={AddSalonPage} />
-        <Route path="/salon/:salonId/update" component={UpdateSalonPage} />
-        <Route path="/salon/:salonId" component={SalonPage} />
-        <Route path="/salon" component={SalonListPage} />
+        <PrivateRoute path="/salon/create" component={AddSalonPage} />
+        <PrivateRoute
+          path="/salon/:salonId/update"
+          component={UpdateSalonPage}
+        />
+        <PrivateRoute path="/salon/:salonId" component={SalonPage} />
+        <PrivateRoute path="/salon" component={SalonListPage} />
         <Route path="/signup" component={SignupPage} />
         <Route path="/login" component={LoginPage} />
       </Switch>
