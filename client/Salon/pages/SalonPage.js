@@ -45,27 +45,33 @@ class SalonPage extends React.Component {
           ? <div>
               <h2>Salon Details</h2>
               <p>Name: {salon.name}</p>
-              <Link to={`/salon/${this.state.salon.id}/update`}>Edit</Link>
+              {this.state.salon.user_id === isAuthenticated ().user.id &&
+                <Link to={`/salon/${this.state.salon.id}/update`}>Edit</Link>}
+
               <hr />
               <div>
                 <h2>Staffs</h2>
                 {this.state.staffs.map (staff => (
                   <li key={staff.id}>
                     <span>{staff.first_name}{' '}{staff.last_name}</span>
-                    <button
-                      onClick={() => {
-                        this.props.history.push (
-                          `/salon/${this.state.salon.id}/staff/${staff.id}`
-                        );
-                      }}
-                    >
-                      Edit
-                    </button>
+                    {this.state.salon.user_id === isAuthenticated ().user.id &&
+                      <button
+                        onClick={() => {
+                          this.props.history.push (
+                            `/salon/${this.state.salon.id}/staff/${staff.id}`
+                          );
+                        }}
+                      >
+                        Edit
+                      </button>}
+
                   </li>
                 ))}
-                <Link to={`/salon/${salon.id}/staff/create`}>
-                  <Button>Add Staff</Button>
-                </Link>
+                {this.state.salon.user_id === isAuthenticated ().user.id &&
+                  <Link to={`/salon/${salon.id}/staff/create`}>
+                    <Button>Add Staff</Button>
+                  </Link>}
+
               </div>
               <hr />
               <h2>Services</h2>
@@ -83,7 +89,11 @@ class SalonPage extends React.Component {
                   </button> */}
                 </li>
               ))}
-              <Link to={`/salon/${salon.id}/service/create`}>Add service</Link>
+
+              {this.state.salon.user_id === isAuthenticated ().user.id &&
+                <Link to={`/salon/${salon.id}/service/create`}>
+                  Add service
+                </Link>}
 
               <hr />
 
