@@ -48,6 +48,10 @@ class SalonPage extends React.Component {
               {this.state.salon.user_id === isAuthenticated ().user.id &&
                 <Link to={`/salon/${this.state.salon.id}/update`}>Edit</Link>}
 
+              <Link to={`/salon/${salon.id}/appointment`}>
+                Book Appointment
+              </Link>
+
               <hr />
               <div>
                 <h2>Staffs</h2>

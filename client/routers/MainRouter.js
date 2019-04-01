@@ -16,6 +16,7 @@ import AddSalonPage from '../Salon/pages/AddSalonPage';
 import UpdateSalonPage from '../Salon/pages/UpdateSalonPage';
 import AddServicePage from '../Salon/pages/AddServicePage';
 import AddTimeTablePage from '../Salon/pages/AddTimeTablePage';
+import AppointmentPage from '../Salon/pages/AppointmentPage';
 
 const history = createBrowserHistory ();
 
@@ -40,6 +41,10 @@ const MainRouter = () => (
         <PrivateRoute
           path="/salon/:salonId/time_table/create"
           component={AddTimeTablePage}
+        />
+        <PrivateRoute
+          path="/salon/:salonId/appointment"
+          component={AppointmentPage}
         />
         <PrivateRoute path="/salon/create" component={AddSalonPage} />
         <PrivateRoute
