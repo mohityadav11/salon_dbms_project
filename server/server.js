@@ -9,6 +9,7 @@ const salonRoutes = require ('./routes/salon.route');
 const staffRoutes = require ('./routes/staff.route');
 const serviceRoutes = require ('./routes/service.route');
 const salonTimeTableRoutes = require ('./routes/salonTimeTable.route');
+const appointmentRoutes = require ('./routes/appointment.route');
 
 const app = express ();
 app.use (bodyParser.json ());
@@ -20,6 +21,7 @@ app.use ('/', salonRoutes);
 app.use ('/', staffRoutes);
 app.use ('/', serviceRoutes);
 app.use ('/', salonTimeTableRoutes);
+app.use ('/', appointmentRoutes);
 
 app.get ('*', (req, res) => {
   res.send (template ());
