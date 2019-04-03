@@ -4,7 +4,7 @@ const create = (req, res) => {
   const {timing, user_id, salon_id, staff_id, services} = req.body;
 
   const appointment = {
-    timing,
+    timing: new Date (timing),
     user_id,
     salon_id,
     staff_id,
@@ -16,6 +16,7 @@ const create = (req, res) => {
 
   connection.query (sql1, appointment, function (err, results, fields) {
     if (err) {
+      console.log (err);
       return res.status (400).json ({err});
     }
 
