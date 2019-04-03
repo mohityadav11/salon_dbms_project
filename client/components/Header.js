@@ -1,12 +1,28 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const Header = () => (
-  <div>
-    <Link to="/signup">Signup</Link>
-    <Link to="/login">Login</Link>
-    <Link to="/salon/create">Create Salon</Link>
-  </div>
-);
+import AppBar from '@material-ui/core/AppBar';
+import Typography from '@material-ui/core/Typography';
+import Toolbar from '@material-ui/core/Toolbar';
+import {withStyles} from '@material-ui/core/styles';
 
-export default Header;
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+});
+
+const Header = props => {
+  const {classes} = props;
+  return (
+    <div className={classes.root}>
+      <AppBar position="static" color="primary">
+        <Toolbar>
+          <Typography variant="h6">Salon DBMS Project</Typography>
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
+};
+
+export default withStyles (styles) (Header);
